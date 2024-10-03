@@ -35,7 +35,3 @@ The author of this payload assumes no responsibility for any illegal or unethica
 2. The payload will automatically collect system information using PowerShell commands.
 3. Once the data is collected, the results will be saved to `/sysinfo.txt` on the Bash Bunny's storage.
 4. Eject the Bash Bunny and review the collected information.
-
----
-
-Con esta descripción tienes toda la información sobre el tercer payload. ¿Te parece bien o te gustaría añadir algo más?
